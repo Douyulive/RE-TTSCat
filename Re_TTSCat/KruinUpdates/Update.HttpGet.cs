@@ -15,7 +15,7 @@ namespace Re_TTSCat
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
                 request.Referer = "https://www.dydmj.org/";
                 request.UserAgent = "KruinUpdates/" + Vars.CurrentVersion.ToString() + " (Re-TTSCat;)";
-                using (yHttpWebResponse response = (HttpWebResponse) await request.GetResponseAsync())
+                using (HttpWebResponse response = (HttpWebResponse) await request.GetResponseAsync())
                 {
                     using (Stream stream = response.GetResponseStream())
                     {

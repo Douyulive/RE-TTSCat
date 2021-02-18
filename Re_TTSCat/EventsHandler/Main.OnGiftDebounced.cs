@@ -1,4 +1,4 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 using Re_TTSCat.Data;
 
 namespace Re_TTSCat
@@ -8,13 +8,13 @@ namespace Re_TTSCat
         private async void GiftDebouncedEvent(object sender, UserGift e)
         {
             ALog($"合并礼物: 来自 {e.User} ({e.UserId}) 的 {e.Qty} 个 {e.Gift}，直接路由到礼物路线...");
-            var constructedArgs = new ReceivedDanmakuArgs();
-            constructedArgs.Danmaku = new DanmakuModel();
-            constructedArgs.Danmaku.GiftName = e.Gift;
-            constructedArgs.Danmaku.GiftCount = e.Qty;
-            constructedArgs.Danmaku.UserName = e.User;
-            constructedArgs.Danmaku.UserID = e.UserId;
-            constructedArgs.Danmaku.MsgType = MsgTypeEnum.GiftSend;
+            var constructedArgs = new ReceivedMessageArgs();
+            constructedArgs.Message = new MessageModel();
+            constructedArgs.Message.GiftName = e.Gift;
+            constructedArgs.Message.GiftCount = e.Qty;
+            constructedArgs.Message.UserName = e.User;
+            constructedArgs.Message.UserID = e.UserId;
+            constructedArgs.Message.MsgType = MsgTypeEnum.GiftSend;
             await GiftRoute(null, constructedArgs);
         }
     }

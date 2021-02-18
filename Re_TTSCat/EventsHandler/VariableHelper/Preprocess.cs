@@ -1,4 +1,4 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 using Re_TTSCat.Data;
 
 namespace Re_TTSCat
@@ -11,24 +11,11 @@ namespace Re_TTSCat
         /// <param name="format">原始模板</param>
         /// <param name="e">原始事件</param>
         /// <returns></returns>
-        public static string Preprocess(string format, DanmakuModel e)
+        public static string Preprocess(string format, MessageModel e)
         {
-            string guardText;
-            switch (e.UserGuardLevel)
-            {
-                default: guardText = Vars.CurrentConf.CustomGuardLevel0; break;
-                case 1: guardText = Vars.CurrentConf.CustomGuardLevel1; break;
-                case 2: guardText = Vars.CurrentConf.CustomGuardLevel2; break;
-                case 3: guardText = Vars.CurrentConf.CustomGuardLevel3; break;
-            }
-            format = format
-                .Replace("$$", "$GUARD$")
-                .Replace("$!", "$VIP$");
-            if (e.isVIP) format = format.Replace("$VIP", Vars.CurrentConf.CustomVIP);
-            else format = format.Replace("$VIP", "");
-            return format.Replace("$GUARD", guardText);
+            return format;
         }
 
-        public static string Preprocess(string format, ReceivedDanmakuArgs e) => Preprocess(format, e.Danmaku);
+        public static string Preprocess(string format, ReceivedMessageArgs e) => Preprocess(format, e.Message);
     }
 }

@@ -1,4 +1,4 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 
 namespace Re_TTSCat.Data
 {
@@ -14,9 +14,9 @@ namespace Re_TTSCat.Data
             }
             return true;
         }
-        public static bool CheckDanmakuLength(ReceivedDanmakuArgs e)
+        public static bool CheckDanmakuLength(ReceivedMessageArgs e)
         {
-            return CheckDanmakuLength(e.Danmaku.CommentText);
+            return CheckDanmakuLength(e.Message.CommentText);
         }
     }
 }

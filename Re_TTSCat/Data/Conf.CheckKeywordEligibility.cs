@@ -1,4 +1,4 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 using System;
 
 namespace Re_TTSCat.Data
@@ -28,9 +28,9 @@ namespace Re_TTSCat.Data
             }
         }
 
-        public static bool CheckKeywordEligibility(ReceivedDanmakuArgs e)
+        public static bool CheckKeywordEligibility(ReceivedMessageArgs e)
         {
-            if (!CheckKeywordEligibility(e.Danmaku.CommentText))
+            if (!CheckKeywordEligibility(e.Message.CommentText))
             {
                 Bridge.ALog("忽略：弹幕已命中屏蔽规则");
                 return false;

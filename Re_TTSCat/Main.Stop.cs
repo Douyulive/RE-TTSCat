@@ -1,4 +1,4 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 using Re_TTSCat.Data;
 using System.Threading;
 using System.Windows.Forms;

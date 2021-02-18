@@ -11,7 +11,7 @@ namespace Re_TTSCat
             public static async Task<Update> GetLatestUpdAsync()
             {
                 string gottenResult;
-                gottenResult = await HttpGet(new Uri("https://www.danmuji.org/api/v2/Re-TTSCat"));
+                gottenResult = await HttpGet(new Uri("https://www.dydmj.org/api/v2/Re-TTSCat"));
                 var jsonObj = JObject.Parse(gottenResult);
                 var latestVer = new Version(jsonObj["version"].ToString());
                 var updDesc = jsonObj["update_desc"].ToString();

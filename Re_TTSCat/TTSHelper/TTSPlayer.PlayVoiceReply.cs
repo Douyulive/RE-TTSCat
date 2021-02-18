@@ -1,4 +1,4 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 using Re_TTSCat.Data;
 using System;
 using System.Threading.Tasks;
@@ -7,7 +7,7 @@ namespace Re_TTSCat
 {
     public static partial class TTSPlayer
     {
-        public static async Task<bool> PlayVoiceReply(DanmakuModel e, VoiceReplyRule rule, bool alwaysMatch = false, bool overrideReadInQueue = false)
+        public static async Task<bool> PlayVoiceReply(MessageModel e, VoiceReplyRule rule, bool alwaysMatch = false, bool overrideReadInQueue = false)
         {
             if (alwaysMatch || rule.Matches(e))
             {
@@ -45,7 +45,7 @@ namespace Re_TTSCat
             }
             else return false;
         }
-        public static async Task<bool> PlayVoiceReply(DanmakuModel e)
+        public static async Task<bool> PlayVoiceReply(MessageModel e)
         {
             if (!Vars.CurrentConf.EnableVoiceReply) return false;
             // danmaku blocking rules have been processed, just process what's left for us

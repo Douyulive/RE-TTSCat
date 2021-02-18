@@ -1,4 +1,4 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 using Re_TTSCat.Data;
 using System.Threading.Tasks;
 
@@ -6,7 +6,7 @@ namespace Re_TTSCat
 {
     public partial class Main : DMPlugin
     {
-        public async Task InteractRoute(object sender, ReceivedDanmakuArgs e)
+        public async Task InteractRoute(object sender, ReceivedMessageArgs e)
         {
             // check user eligibility
             if (!Conf.CheckUserEligibility(e)) return;
@@ -14,22 +14,13 @@ namespace Re_TTSCat
 
             string result;
 
-            switch (e.Danmaku.InteractType)
+            switch (e.Message.MsgType)
             {
-                case InteractTypeEnum.Enter:
-                    result = ProcessInteract(e.Danmaku, Vars.CurrentConf.OnInteractEnter);
+                case MsgTypeEnum.UserEnter:
+                    result = ProcessInteract(e.Message, Vars.CurrentConf.OnInteractEnter);
                     break;
-                case InteractTypeEnum.Follow:
-                    result = ProcessInteract(e.Danmaku, Vars.CurrentConf.OnInteractFollow);
-                    break;
-                case InteractTypeEnum.MutualFollow:
-                    result = ProcessInteract(e.Danmaku, Vars.CurrentConf.OnInteractMutualFollow);
-                    break;
-                case InteractTypeEnum.Share:
-                    result = ProcessInteract(e.Danmaku, Vars.CurrentConf.OnInteractShare);
-                    break;
-                case InteractTypeEnum.SpecialFollow:
-                    result = ProcessInteract(e.Danmaku, Vars.CurrentConf.OnInteractSpecialFollow);
+                case MsgTypeEnum.LiveShare:
+                    result = ProcessInteract(e.Message, Vars.CurrentConf.OnInteractShare);
                     break;
                 default: return;
             }

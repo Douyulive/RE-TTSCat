@@ -1,4 +1,4 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,7 +19,7 @@ namespace Re_TTSCat.Windows
             InitializeComponent();
             isComponentsReady = true;
         }
-        public static async Task<DanmakuModel> GetDanmakuModel(string content)
+        public static async Task<MessageModel> GetDanmakuModel(string content)
         {
             var window = new TestVoiceReplyParamsWindow();
             window.template = content;
@@ -32,16 +32,16 @@ namespace Re_TTSCat.Windows
 
         private string template;
 
-        private DanmakuModel model
+        private MessageModel model
         {
-            get => new DanmakuModel()
+            get => new MessageModel()
             {
                 CommentText = TextBox_DanmakuContent.Text,
                 GiftName = TextBox_GiftName.Text,
                 GiftCount = int.Parse(TextBox_GiftQty.Text),
                 UserName = TextBox_Username.Text,
-                isVIP = CheckBox_IsUserVip.IsChecked ?? true,
-                UserGuardLevel = guardLevel,
+                //isVIP = CheckBox_IsUserVip.IsChecked ?? true,
+                UserNobility = guardLevel,
                 MsgType = (RadioButton_Danmaku.IsChecked ?? true) ? MsgTypeEnum.Comment : MsgTypeEnum.GiftSend
             };
         }

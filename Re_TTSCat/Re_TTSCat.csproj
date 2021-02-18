@@ -38,17 +38,15 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BilibiliDM_PluginFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\BilibiliDM_PluginFramework.dll</HintPath>
+    <Reference Include="DouyuDM_PluginFramework">
+      <HintPath>..\DouyuDM_PluginFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="NAudio, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NAudio.1.9.0\lib\net35\NAudio.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -98,24 +96,17 @@
     <Compile Include="Data\VoiceReplyRule.cs" />
     <Compile Include="Data\VoiceReplyRule.Matches.cs" />
     <Compile Include="EventsHandler\DanmakuRoutes\InteractRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\WarningRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\SuperChatRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\WelcomeGuardRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\WelcomeRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\LiveEndRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\LiveStartRoute.cs" />
-    <Compile Include="EventsHandler\DanmakuRoutes\GuardBuyRoute.cs" />
     <Compile Include="EventsHandler\DanmakuRoutes\GiftRoute.cs" />
     <Compile Include="EventsHandler\DanmakuRoutes\CommentRoute.cs" />
+    <Compile Include="EventsHandler\DanmakuRoutes\LiveEndRoute.cs" />
+    <Compile Include="EventsHandler\DanmakuRoutes\LiveStartRoute.cs" />
     <Compile Include="EventsHandler\Main.OnGiftDebounced.cs" />
     <Compile Include="EventsHandler\Main.OnReceivedDanmaku.cs" />
-    <Compile Include="EventsHandler\Main.OnReceivedRoomCount.cs" />
     <Compile Include="EventsHandler\Main.OnDisconnected.cs" />
     <Compile Include="EventsHandler\Main.OnConnected.cs" />
     <Compile Include="EventsHandler\VariableHelper\Preprocess.cs" />
     <Compile Include="EventsHandler\VariableHelper\ProcessInteract.cs" />
     <Compile Include="EventsHandler\VariableHelper\ProcessVoiceReply.cs" />
-    <Compile Include="EventsHandler\VariableHelper\ProcessSuperChat.cs" />
     <Compile Include="EventsHandler\VariableHelper\ProcessGift.cs" />
     <Compile Include="EventsHandler\VariableHelper\ProcessDanmaku.cs" />
     <Compile Include="KruinUpdates\Update.GetLatestUpd.cs" />
@@ -256,6 +247,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>cmd /c copy /Y $(TargetPath) "%25USERPROFILE%25\Documents\弹幕姬\Plugins\$(TargetFileName)"</PostBuildEvent>
+    <PostBuildEvent>cmd /c copy /Y "$(TargetPath)" "%25USERPROFILE%25\Documents\斗鱼弹幕姬\Plugins\$(TargetFileName)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

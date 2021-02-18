@@ -1,11 +1,11 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 using Re_TTSCat.Data;
 
 namespace Re_TTSCat
 {
     public partial class Main : DMPlugin
     {
-        public static string ProcessVoiceReply(DanmakuModel e, VoiceReplyRule rule)
+        public static string ProcessVoiceReply(MessageModel e, VoiceReplyRule rule)
         {
             // there's no need to check if the types match, we've already checked for it
             switch ((VoiceReplyRule.MatchSource)rule.MatchingSource)

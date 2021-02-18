@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
-using BilibiliDM_PluginFramework;
+using DouyuDM_PluginFramework;
 using Re_TTSCat.Data;
 
 namespace Re_TTSCat

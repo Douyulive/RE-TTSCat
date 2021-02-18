@@ -1,4 +1,4 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 using System;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
@@ -7,7 +7,7 @@ namespace Re_TTSCat.Data
 {
     public partial class VoiceReplyRule : INotifyPropertyChanged
     {
-        public bool Matches(DanmakuModel dm)
+        public bool Matches(MessageModel dm)
         {
             try
             {
@@ -17,11 +17,11 @@ namespace Re_TTSCat.Data
                 switch ((MatchSource)MatchingSource)
                 {
                     case MatchSource.DanmakuContent:
-                        if (!(dm.MsgType == MsgTypeEnum.Comment || dm.MsgType != MsgTypeEnum.SuperChat)) return false;
+                        if (!(dm.MsgType == MsgTypeEnum.Comment)) return false;
                         content = dm.CommentText;
                         break;
                     case MatchSource.DanmakuUser:
-                        if (!(dm.MsgType == MsgTypeEnum.Comment || dm.MsgType != MsgTypeEnum.SuperChat)) return false;
+                        if (!(dm.MsgType == MsgTypeEnum.Comment)) return false;
                         content = dm.UserName;
                         break;
                     case MatchSource.GiftName:

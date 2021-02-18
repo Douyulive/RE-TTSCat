@@ -1,4 +1,4 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 
 namespace Re_TTSCat.Data
 {
@@ -30,9 +30,9 @@ namespace Re_TTSCat.Data
                     }
             }
         }
-        public static bool CheckGiftEligibility(ReceivedDanmakuArgs e)
+        public static bool CheckGiftEligibility(ReceivedMessageArgs e)
         {
-            if (!CheckGiftEligibility(e.Danmaku.GiftName))
+            if (!CheckGiftEligibility(e.Message.GiftName))
             {
                 Bridge.ALog("忽略：礼物已命中屏蔽规则");
                 return false;

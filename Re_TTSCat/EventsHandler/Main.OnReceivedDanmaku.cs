@@ -1,56 +1,48 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 using Re_TTSCat.Data;
 
 namespace Re_TTSCat
 {
     public partial class Main : DMPlugin
     {
-        public async void OnReceivedDanmaku(object sender, ReceivedDanmakuArgs e)
+        public async void OnReceivedDanmaku(object sender, ReceivedMessageArgs e)
         {
             if (!IsNAudioReady) return;
-            switch (e.Danmaku.MsgType)
+            switch (e.Message.MsgType)
             {
-                case MsgTypeEnum.Interact:
-                    await InteractRoute(sender, e);
-                    break;
                 case MsgTypeEnum.Comment:
                     await CommentRoute(sender, e);
-                    break;
-                case MsgTypeEnum.SuperChat:
-                    await SuperChatRoute(sender, e);
                     break;
                 case MsgTypeEnum.GiftSend:
                     if (Vars.CurrentConf.GiftsThrottle)
                     {
-                        ALog($"礼物合并已启用，正在合并礼物: 来自 {e.Danmaku.UserName} ({e.Danmaku.UserID}) 的 {e.Danmaku.GiftCount} 个 {e.Danmaku.GiftName}");
+                        ALog($"礼物合并已启用，正在合并礼物: 来自 {e.Message.UserName} ({e.Message.UserID}) 的 {e.Message.GiftCount} 个 {e.Message.GiftName}");
                         Vars.Debouncer.Add(new UserGift
                         (
-                            e.Danmaku.UserName,
-                            e.Danmaku.UserID,
-                            e.Danmaku.GiftName,
-                            e.Danmaku.GiftCount
+                            e.Message.UserName,
+                            e.Message.UserID,
+                            e.Message.GiftName,
+                            e.Message.GiftCount
                         ));
                     }
                     else
                         await GiftRoute(sender, e);
                     break;
-                case MsgTypeEnum.GuardBuy:
-                    await GuardBuyRoute(sender, e);
+                case MsgTypeEnum.LiveStatusToggle:
+                    if (e.Message.LiveStatus == 1)
+                    {
+                        await LiveStartRoute(sender, e);
+                    }
+                    else if (e.Message.LiveStatus == 0)
+                    {
+                        await LiveEndRoute(sender, e);
+                    }
                     break;
-                case MsgTypeEnum.LiveStart:
-                    await LiveStartRoute(sender, e);
+                case MsgTypeEnum.UserEnter:
+                    await InteractRoute(sender, e);
                     break;
-                case MsgTypeEnum.LiveEnd:
-                    await LiveEndRoute(sender, e);
-                    break;
-                case MsgTypeEnum.Welcome:
-                    await WelcomeRoute(sender, e);
-                    break;
-                case MsgTypeEnum.WelcomeGuard:
-                    await WelcomeGuardRoute(sender, e);
-                    break;
-                case MsgTypeEnum.Warning:
-                    await WarningRoute(sender, e);
+                case MsgTypeEnum.LiveShare:
+                    await InteractRoute(sender, e);
                     break;
             }
         }

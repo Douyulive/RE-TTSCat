@@ -243,17 +243,9 @@ namespace Re_TTSCat.Data
         /// </summary>
         public string OnDanmaku { get; set; }
         /// <summary>
-        /// 自定义醒目留言读出内容，留空以禁用
-        /// </summary>
-        public string OnSuperChat { get; set; }
-        /// <summary>
         /// 自定义礼物读出内容，留空以禁用
         /// </summary>
         public string OnGift { get; set; }
-        /// <summary>
-        /// 购买船票文本，留空以禁用
-        /// </summary>
-        public string OnGuardBuy { get; set; }
         /// <summary>
         /// 直播开始文本，留空以禁用
         /// </summary>
@@ -263,57 +255,14 @@ namespace Re_TTSCat.Data
         /// </summary>
         public string OnLiveEnd { get; set; }
         /// <summary>
-        /// 欢迎老爷文本，留空以禁用
-        /// </summary>
-        public string OnWelcome { get; set; }
-        /// <summary>
-        /// 超管警告文本，留空以禁用
-        /// </summary>
-        public string OnWarning { get; set; }
-        /// <summary>
-        /// 欢迎船员文本，留空以禁用
-        /// </summary>
-        public string OnWelcomeGuard { get; set; }
-        /// <summary>
-        /// 自定义非船员头衔
-        /// </summary>
-        public string CustomGuardLevel0 { get; set; }
-        /// <summary>
-        /// 自定义总督头衔
-        /// </summary>
-        public string CustomGuardLevel1 { get; set; }
-        /// <summary>
-        /// 自定义提督头衔
-        /// </summary>
-        public string CustomGuardLevel2 { get; set; }
-        /// <summary>
-        /// 自定义舰长头衔
-        /// </summary>
-        public string CustomGuardLevel3 { get; set; }
-        /// <summary>
-        /// 自定义老爷头衔
-        /// </summary>
-        public string CustomVIP { get; set; }
-        /// <summary>
         /// 进入房间时的读出内容
         /// </summary>
         public string OnInteractEnter { get; set; }
-        /// <summary>
-        /// 当用户关注时的读出内容
-        /// </summary>
-        public string OnInteractFollow { get; set; }
-        /// <summary>
-        /// 当用户互相关注时的读出内容
-        /// </summary>
-        public string OnInteractMutualFollow { get; set; }
         /// <summary>
         /// 当用户分享直播间时的读出内容
         /// </summary>
         public string OnInteractShare { get; set; }
         /// <summary>
-        /// 当用户特别关注时的读出内容
-        /// </summary>
-        public string OnInteractSpecialFollow { get; set; }
         /// <summary>
         /// 语音答复规则列表
         /// </summary>

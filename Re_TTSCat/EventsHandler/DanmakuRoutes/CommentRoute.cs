@@ -1,4 +1,4 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 using System.Threading.Tasks;
 using Re_TTSCat.Data;
 using System.Linq;
@@ -7,7 +7,7 @@ namespace Re_TTSCat
 {
     public partial class Main : DMPlugin
     {
-        public async Task CommentRoute(object sender, ReceivedDanmakuArgs e)
+        public async Task CommentRoute(object sender, ReceivedMessageArgs e)
         {
             // check user eligibility
             if (!Conf.CheckUserEligibility(e)) return;
@@ -18,16 +18,16 @@ namespace Re_TTSCat
             Bridge.ALog("规则检查通过，准备朗读");
             if (Vars.CurrentConf.VoiceReplyFirst)
             {
-                var hitAnyRule = await TTSPlayer.PlayVoiceReply(e.Danmaku);
+                var hitAnyRule = await TTSPlayer.PlayVoiceReply(e.Message);
                 if (!hitAnyRule || !Vars.CurrentConf.IgnoreIfHitVoiceReply)
                     await TTSPlayer.UnifiedPlay(ProcessDanmaku(e));
             }
             else
             {
-                var hitAnyRule = Vars.CurrentConf.VoiceReplyRules.Any(x => x.Matches(e.Danmaku));
+                var hitAnyRule = Vars.CurrentConf.VoiceReplyRules.Any(x => x.Matches(e.Message));
                 if (!hitAnyRule || !Vars.CurrentConf.IgnoreIfHitVoiceReply)
                     await TTSPlayer.UnifiedPlay(ProcessDanmaku(e));
-                await TTSPlayer.PlayVoiceReply(e.Danmaku);
+                await TTSPlayer.PlayVoiceReply(e.Message);
             }
         }
     }

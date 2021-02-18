@@ -1,4 +1,4 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 
 namespace Re_TTSCat.Data
 {
@@ -17,11 +17,11 @@ namespace Re_TTSCat.Data
             }
         }
 
-        public static bool CheckUserEligibility(ReceivedDanmakuArgs e)
+        public static bool CheckUserEligibility(ReceivedMessageArgs e)
         {
             if (Vars.CurrentConf.BlockUID)
             {
-                if (!CheckUserEligibility(e.Danmaku.UserID.ToString()))
+                if (!CheckUserEligibility(e.Message.UserID.ToString()))
                 {
                     Bridge.ALog("忽略：用户已命中 UID 规则");
                     return false;
@@ -29,7 +29,7 @@ namespace Re_TTSCat.Data
             }
             else
             {
-                if (!CheckUserEligibility(e.Danmaku.UserName))
+                if (!CheckUserEligibility(e.Message.UserName))
                 {
                     Bridge.ALog("忽略：用户已命中用户名规则");
                     return false;

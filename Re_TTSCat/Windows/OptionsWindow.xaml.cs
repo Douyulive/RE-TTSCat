@@ -1,4 +1,4 @@
-﻿using BilibiliDM_PluginFramework;
+﻿using DouyuDM_PluginFramework;
 using Microsoft.VisualBasic; // ← 不愧是我
 using NAudio.CoreAudioApi;
 using NAudio.Wave;
@@ -363,40 +363,13 @@ namespace Re_TTSCat.Windows
             Vars.CurrentConf.KeywordBlackList = TextBox_KeywordBlacklist.Text;
             Vars.CurrentConf.KeywordWhiteList = TextBox_KeywordWhitelist.Text;
             UpdateSliders(null, null);
-            Vars.CurrentConf.OnGuardBuy = TextBox_GuardBuy.Text;
             Vars.CurrentConf.OnLiveEnd = TextBox_LiveEnd.Text;
             Vars.CurrentConf.OnLiveStart = TextBox_LiveStart.Text;
             Vars.CurrentConf.OnDanmaku = TextBox_OnDanmaku.Text;
-            Vars.CurrentConf.OnSuperChat = TextBox_OnSuperChat.Text;
             Vars.CurrentConf.OnGift = TextBox_OnGift.Text;
-            Vars.CurrentConf.OnWelcome = TextBox_Welcome.Text;
-            Vars.CurrentConf.OnWelcomeGuard = TextBox_WelcomeGuard.Text;
-            Vars.CurrentConf.OnWarning = TextBox_SuperAdminWarnings.Text;
             Vars.CurrentConf.OnInteractEnter = TextBox_InteractEnter.Text;
-            Vars.CurrentConf.OnInteractFollow = TextBox_InteractFollow.Text;
-            Vars.CurrentConf.OnInteractMutualFollow = TextBox_InteractMutualFollow.Text;
             Vars.CurrentConf.OnInteractShare = TextBox_InteractShare.Text;
-            Vars.CurrentConf.OnInteractSpecialFollow = TextBox_InteractSpecialFollow.Text;
             Vars.CurrentConf.VoiceReplyRules = new List<VoiceReplyRule>(voiceReplyRulesDataSource);
-            // try to resolve custom titles
-            try
-            {
-                var raw = TextBox_CustomTitles.Text;
-                if (raw.Count(x => x == '/') < 4)
-                {
-                    throw new ArgumentException("参数不足，是否已设定所有值？");
-                }
-                var array = raw.Split('/');
-                Vars.CurrentConf.CustomVIP = array[0];
-                Vars.CurrentConf.CustomGuardLevel0 = array[1];
-                Vars.CurrentConf.CustomGuardLevel1 = array[2];
-                Vars.CurrentConf.CustomGuardLevel2 = array[3];
-                Vars.CurrentConf.CustomGuardLevel3 = array[4];
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show($"未保存自定义头衔数据: 无法解析: {ex.Message}\n其他数据均将继续尝试正常保存", "Re: TTSCat", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             await Conf.SaveAsync();
             await OnLoad(null, null);
         }
@@ -487,21 +460,12 @@ namespace Re_TTSCat.Windows
             TextBox_KeywordBlacklist.Text = Vars.CurrentConf.KeywordBlackList;
             TextBox_KeywordWhitelist.Text = Vars.CurrentConf.KeywordWhiteList;
             UpdateSliders(null, null);
-            TextBox_GuardBuy.Text = Vars.CurrentConf.OnGuardBuy;
             TextBox_LiveEnd.Text = Vars.CurrentConf.OnLiveEnd;
             TextBox_LiveStart.Text = Vars.CurrentConf.OnLiveStart;
             TextBox_OnDanmaku.Text = Vars.CurrentConf.OnDanmaku;
-            TextBox_OnSuperChat.Text = Vars.CurrentConf.OnSuperChat;
             TextBox_OnGift.Text = Vars.CurrentConf.OnGift;
             TextBox_InteractEnter.Text = Vars.CurrentConf.OnInteractEnter;
-            TextBox_InteractFollow.Text = Vars.CurrentConf.OnInteractFollow;
-            TextBox_InteractMutualFollow.Text = Vars.CurrentConf.OnInteractMutualFollow;
             TextBox_InteractShare.Text = Vars.CurrentConf.OnInteractShare;
-            TextBox_InteractSpecialFollow.Text = Vars.CurrentConf.OnInteractSpecialFollow;
-            TextBox_Welcome.Text = Vars.CurrentConf.OnWelcome;
-            TextBox_WelcomeGuard.Text = Vars.CurrentConf.OnWelcomeGuard;
-            TextBox_CustomTitles.Text = $"{Vars.CurrentConf.CustomVIP}/{Vars.CurrentConf.CustomGuardLevel0}/{Vars.CurrentConf.CustomGuardLevel1}/{Vars.CurrentConf.CustomGuardLevel2}/{Vars.CurrentConf.CustomGuardLevel3}";
-            TextBox_SuperAdminWarnings.Text = Vars.CurrentConf.OnWarning;
             Label_AboutTitle.Text = $"Re: TTSCat - Delta ({Vars.CurrentVersion})";
             voiceReplyRulesDataSource.Clear();
             foreach (var item in Vars.CurrentConf.VoiceReplyRules)

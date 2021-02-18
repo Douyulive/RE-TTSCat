@@ -30,7 +30,7 @@ namespace Re_TTSCat
                         ALog("正在下载更新...");
                         using (var downloader = new WebClient())
                         {
-                            await downloader.DownloadFileTaskAsync("https://www.danmuji.org" + latestVersion.DownloadLink, Vars.DownloadUpdateFilename);
+                            await downloader.DownloadFileTaskAsync("https://www.dydmj.org" + latestVersion.DownloadLink, Vars.DownloadUpdateFilename);
                         }
 
                         ALog("正在备份...");

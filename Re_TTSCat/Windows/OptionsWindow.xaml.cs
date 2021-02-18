@@ -564,7 +564,7 @@ namespace Re_TTSCat.Windows
 
         private void Button_About_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://www.danmuji.org/plugins/Re-TTSCat");
+            Process.Start("https://www.dydmj.org/plugins/Re-TTSCat");
         }
 
         private void Button_Suggestions_Click(object sender, RoutedEventArgs e)
@@ -798,7 +798,7 @@ namespace Re_TTSCat.Windows
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://www.danmuji.org/plugins/Re-TTSCat#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%B4%E8%A1%94");
+            Process.Start("https://www.dydmj.org/plugins/Re-TTSCat#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%B4%E8%A1%94");
         }
 
         private void Button_TriggerGc_Click(object sender, RoutedEventArgs e)

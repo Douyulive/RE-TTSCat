@@ -68,7 +68,7 @@ namespace Re_TTSCat.Windows
                     TextBlock_Latest.Text += "（草，怎么你的版本还更新）"; // <- 不愧是我 2/1
                 }
                 TextBox_UpdContents.Text = "更新时间: " + latestVersion.UpdateTime.ToString() + "\n" + "更新日志: " + "\n" + latestVersion.UpdateDescription.Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n", "\r\n");
-                updateDownloadURL = "https://www.danmuji.org" + latestVersion.DownloadLink;
+                updateDownloadURL = "https://www.dydmj.org" + latestVersion.DownloadLink;
             }
             catch (Exception ex)
             {
